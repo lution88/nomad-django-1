@@ -10,11 +10,15 @@ class TweetAdmin(admin.ModelAdmin):
         "user",
         "created_at",
         "updated_at",
+        "likes",
     )
     list_filter = (
         "payload",
         "user",
     )
+
+    def likes(self, tweet):
+        return tweet.likes.count()
 
 
 @admin.register(Like)
