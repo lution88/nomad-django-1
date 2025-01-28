@@ -15,12 +15,14 @@ class Review(CommonModel):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name="reviews",
     )
     experience = models.ForeignKey(
         "experiences.Experience",
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name="reviews",
     )
     # 유저가 남기는 텍스트: 리뷰 - payload
     payload = models.TextField(max_length=250)

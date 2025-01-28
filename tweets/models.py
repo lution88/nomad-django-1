@@ -11,6 +11,8 @@ class Tweet(CommonModel):
         return self.payload
 
 
+
+
 class Like(CommonModel):
     user = models.ForeignKey("users.User", on_delete=models.CASCADE)
     tweet = models.ForeignKey(
