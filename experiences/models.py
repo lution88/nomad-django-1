@@ -2,16 +2,14 @@ from django.db import models
 
 from common.models import CommonModel
 
+# Create your models here.
+
 
 class Experience(CommonModel):
-    country = models.CharField(
-        max_length=50,
-        default="한국",
-    )
-    city = models.CharField(
-        max_length=80,
-        default="서울",
-    )
+    """Experience Model Definition"""
+
+    country = models.CharField(max_length=50, default="한국")
+    city = models.CharField(max_length=80, default="서울")
 
     name = models.CharField(max_length=250)
     host = models.ForeignKey("users.User", on_delete=models.CASCADE)
@@ -20,15 +18,12 @@ class Experience(CommonModel):
     start = models.TimeField()
     end = models.TimeField()
     description = models.TextField()
-    perks = models.ManyToManyField(
-        "experiences.Perk",
-    )
-
+    perks = models.ManyToManyField("experiences.Perk")
     category = models.ForeignKey(
         "categories.Category",
-        on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        on_delete=models.SET_NULL,
     )
 
     def __str__(self):
@@ -36,20 +31,11 @@ class Experience(CommonModel):
 
 
 class Perk(CommonModel):
-    """What is included on an Experiences"""
+    """What is included on an Experience"""
 
-    name = models.CharField(
-        max_length=100,
-    )
-    details = models.CharField(
-        max_length=250,
-        blank=True,
-        default="",
-    )
-    explanation = models.TextField(
-        blank=True,
-        default="",
-    )
+    name = models.CharField(max_length=100)
+    details = models.CharField(max_length=250, blank=True, default="")
+    explanation = models.TextField(blank=True, default="")
 
     def __str__(self):
         return self.name

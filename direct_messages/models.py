@@ -4,11 +4,10 @@ from common.models import CommonModel
 
 
 class ChattingRoom(CommonModel):
-    """Room Model definition"""
+    """Room Model Definition"""
 
-    users = models.ManyToManyField(
-        "users.User",
-    )
+    # 참가자들
+    users = models.ManyToManyField("users.User")
 
     def __str__(self):
         return "Chatting Room."

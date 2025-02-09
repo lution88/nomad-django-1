@@ -4,17 +4,15 @@ from common.models import CommonModel
 
 
 class Category(CommonModel):
-    """Room or Experiencve Categories"""
 
     class CategoryKindChoices(models.TextChoices):
-        ROOMS = ("rooms", "Rooms")
-        EXPERIENCES = ("experiences", "Experiences")
+        ROOMS = "rooms", "Rooms"
+        EXPERIENCE = "experiences", "Experiences"
+
+    """Room or Experience Category"""
 
     name = models.CharField(max_length=50)
-    kind = models.CharField(
-        max_length=15,
-        choices=CategoryKindChoices.choices,
-    )
+    kind = models.CharField(max_length=15, choices=CategoryKindChoices.choices)
 
     def __str__(self):
         return f"{self.kind.title()}: {self.name}"
